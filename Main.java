@@ -1,20 +1,24 @@
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class Employee {
+abstract class Employee 
+{
     private String name;
     private int id;
 
-    public Employee(String name, int id) {
+    public Employee(String name, int id) 
+    {
         this.name = name;
         this.id = id;
     }
 
-    public String getName() {
+    public String getName() 
+    {
         return name;
     }
 
-    public int getId() {
+    public int getId() 
+    {
         return id;
     }
 
@@ -22,74 +26,92 @@ abstract class Employee {
     public abstract double calculateSalary();
 
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return "Employee [name=" + name + ", id=" + id + ", salary=" + calculateSalary() + "]";
     }
 }
 
-class FullTimeEmployee extends Employee {
+class FullTimeEmployee extends Employee 
+{
     private double monthlySalary;
 
-    public FullTimeEmployee(String name, int id, double monthlySalary) {
+    public FullTimeEmployee(String name, int id, double monthlySalary) 
+    {
         super(name, id);
         this.monthlySalary = monthlySalary;
     }
 
     @Override
-    public double calculateSalary() {
+    public double calculateSalary() 
+    {
         return monthlySalary;
     }
 }
 
-class PartTimeEmployee extends Employee {
+class PartTimeEmployee extends Employee 
+{
     private int hoursWorked;
     private double hourlyRate;
 
-    public PartTimeEmployee(String name, int id, int hoursWorked, double hourlyRate) {
+    public PartTimeEmployee(String name, int id, int hoursWorked, double hourlyRate) 
+    {
         super(name, id);
         this.hoursWorked = hoursWorked;
         this.hourlyRate = hourlyRate;
     }
 
     @Override
-    public double calculateSalary() {
+    public double calculateSalary() 
+    {
         return hoursWorked * hourlyRate;
     }
 }
 
-class PayrollSystem {
+class PayrollSystem 
+{
     private List<Employee> employeeList;
 
-    public PayrollSystem() {
+    public PayrollSystem() 
+    {
         employeeList = new ArrayList<>();
     }
 
-    public void addEmployee(Employee employee) {
+    public void addEmployee(Employee employee) 
+    {
         employeeList.add(employee);
     }
 
-    public void removeEmployee(int id) {
+    public void removeEmployee(int id) 
+    {
         Employee employeeToRemove = null;
-        for (Employee employee : employeeList) {
-            if (employee.getId() == id) {
+        for (Employee employee : employeeList) 
+        {
+            if (employee.getId() == id)
+            {
                 employeeToRemove = employee;
                 break;
             }
         }
-        if (employeeToRemove != null) {
+        if (employeeToRemove != null) 
+        {
             employeeList.remove(employeeToRemove);
         }
     }
 
-    public void displayEmployees() {
-        for (Employee employee : employeeList) {
+    public void displayEmployees() 
+    {
+        for (Employee employee : employeeList) 
+        {
             System.out.println(employee);
         }
     }
 }
 
-public class Main {
-    public static void main(String[] args) {
+public class Main 
+{
+    public static void main(String[] args) 
+    {
         PayrollSystem payrollSystem = new PayrollSystem();
 
         FullTimeEmployee emp1 = new FullTimeEmployee("John Doe", 101, 5000.0);
